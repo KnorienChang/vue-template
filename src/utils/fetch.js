@@ -4,11 +4,10 @@ const instance = axios.create({
   headers: {
     'Content-Type': 'application/json;charset=UTF-8'
   },
-  baseURL: process.env.VUE_APP_HTTP,
-  // baseURL:
-  //   process.env.NODE_ENV === 'production'
-  //     ? process.env.baseURL
-  //     : process.env.VUE_APP_HTTP,
+  baseURL:
+    process.env.NODE_ENV === 'production'
+      ? process.env.VUE_APP_HTTP
+      : process.env.BASE_URL,
   timeout: 20000,
   withCredentials: true
 });
