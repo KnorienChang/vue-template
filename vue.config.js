@@ -1,6 +1,7 @@
 const CompressionPlugin = require('compression-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
 module.exports = {
+  outputDir: process.env.OUTPUT_DIR,
   // 取消生产环境的sourceMap
   productionSourceMap: false,
   devServer: {

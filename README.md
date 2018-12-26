@@ -19,3 +19,9 @@ yarn run preview    # 预览生产环境的应用
 
 ## 生产环境请求源设置
 `fetch.js`下的`baseURL`设置，默认设置为固定请求源，可以调整为`baseURL: process.env.BASE_URL`设置为请求本地源，用于nginx做proxy配置。
+
+## 添加多个打包环境
+>有关于环境变量和模式的文档可以查阅[官方网文档](https://cli.vuejs.org/zh/guide/mode-and-env.html)。
+
+新建换将变量文件`.env.xxx`，添加环境变量`NODE_ENV=production`启用打包，指定`OUTPUT_DIR`输出打包目录，其余环境变量可自行增删。
+>注：在项目中使用的环境变量设置要以`VUE_APP_`开头，而在`node`环境下，即`webpack`打包的配置所需要的环境变量，可以不需要前缀。
