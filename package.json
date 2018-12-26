@@ -4,10 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "npm run lint && vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "preview": "serve -s dist"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "element-ui": "^2.4.11",
+    "lib-flexible": "^0.3.2",
+    "normalize.css": "^8.0.1",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
@@ -18,11 +23,15 @@
     "@vue/cli-service": "^3.2.0",
     "@vue/eslint-config-prettier": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "brotli-webpack-plugin": "^1.0.0",
+    "compression-webpack-plugin": "^2.0.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.0",
+    "postcss-px2rem": "^0.3.0",
     "sass-loader": "^7.0.1",
+    "serve": "^10.1.1",
     "vue-template-compiler": "^2.5.17"
   },
   "gitHooks": {
