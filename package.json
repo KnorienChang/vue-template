@@ -13,8 +13,8 @@
     "element-ui": "^2.4.11",
     "lib-flexible": "^0.3.2",
     "normalize.css": "^8.0.1",
-    "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
+    "vue": "^2.5.21",
+    "vue-router": "^3.0.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
