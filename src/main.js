@@ -5,8 +5,6 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import 'lib-flexible/flexible';
-/* eslint-disable no-unused-vars */
-import ElementUI from 'element-ui';
 import { get, post } from './utils/fetch';
 Vue.prototype.$get = get;
 Vue.prototype.$post = post;
