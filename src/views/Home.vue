@@ -1,7 +1,13 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <div>{{ $store.state.count }}</div>
+    <el-row
+      ><el-button size="mini" @click="add">增加1</el-button
+      >默认：1，增加：1，值为：{{ $store.getters.count }}，getters派生：{{
+        $store.getters.deriveCount
+      }}</el-row
+    >
+    <p>直接通过state读取：{{ $store.state.common.count }}</p>
     <el-row>
       <el-button>默认按钮</el-button>
       <el-button type="primary">主要按钮</el-button>
@@ -28,6 +34,11 @@ export default {
       /* eslint-disable no-console */
       .then(console.log)
       .catch(console.error);
+  },
+  methods: {
+    add() {
+      this.$store.dispatch('add', 'add');
+    }
   }
 };
 </script>
