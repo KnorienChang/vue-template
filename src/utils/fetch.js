@@ -23,7 +23,8 @@ instance.interceptors.request.use(
     Message({
       type: 'success',
       message: 'success',
-      duration: 0
+      duration: 5000,
+      showClose: true
     });
     return config;
   },
