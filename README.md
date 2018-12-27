@@ -52,5 +52,5 @@ import './../assets/style/toast.scss';
 router几乎没有做处理，这块的操作因项目而异。
 
 store进行了文件读取操作，按照模块功能划分的处理进行改造。
-当新增加module的时候，。，直接在`modules`文件夹下创建`xxx.js`，所有的状态都被vuex读取并管理。
->注：因为读取文件的数据，state会多一层对象，所以直接通过读取state会读取不到。假如我要读取`xxx.js`文件下的状态`count`，我们可以通过读取`$store.getters.count`或者`$store.state.xxx.count`，否则就不能够正确的读取到state，具体的可以查阅[vuex官方文档](https://vuex.vuejs.org/zh/installation.html)。
+当新增加module的时候，可以直接在`modules`文件夹下创建`xxx.js`，所有的状态都被vuex读取并管理。
+>注：因为读取文件的数据，state会多一层对象，所以直接通过读取state会读取不到。假如我要读取`xxx.js`文件下的状态`count`，我们可以通过读取`$store.getters.count`或者`$store.state.xxx.count`，否则就不能够正确的读取到state，具体的可以查阅[vuex官方文档](https://vuex.vuejs.org/zh/installation.html)。
