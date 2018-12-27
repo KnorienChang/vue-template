@@ -8,7 +8,8 @@
     "build:prod": "vue-cli-service build",
     "build:pre": "vue-cli-service build --mode prerelease",
     "lint": "vue-cli-service lint",
-    "preview": "serve -s dist"
+    "preview:prod": "serve -s dist-production",
+    "preview:pre": "serve -s dist-prerelease"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -25,6 +26,7 @@
     "@vue/cli-service": "^3.2.0",
     "@vue/eslint-config-prettier": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
     "brotli-webpack-plugin": "^1.0.0",
     "compression-webpack-plugin": "^2.0.0",
     "eslint": "^5.8.0",
