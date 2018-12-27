@@ -28,6 +28,7 @@ yarn run preview:pre  # 预览其他打包环境的应用
 >注：在项目中使用的环境变量设置要以`VUE_APP_`开头，而在`node`环境下，即`webpack`打包的配置所需要的环境变量，可以不需要前缀。
 
 ## 在封装函数中使用组件，依然需要执行按需引入
+>策略可以自己调整，也可以全部引入或者只采用按需引入的方式。这里以`element-ui`为例。
 在`.babel.config.js`中配置插件(以`element-ui`的`message`组件为例)
 ```js
 plugins: [
