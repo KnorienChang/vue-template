@@ -9,6 +9,8 @@ yarn run lint         # 检查和修复错误的格式
 yarn run preview:prod # 预览生产环境的应用
 yarn run preview:pre  # 预览其他打包环境的应用
 ```
+## 打包资源完整使用CDN
+`vue.config.js`配置项`baseUrl`配置开启，判断了本地开发环境和打包环境的配置，**`默认不开启`**。在生产环境设置`CDN`配置，即所有的打包资源都可以放到`CDN`服务器上，减少主服务器压力。例如`baseUrl`设置为`https://cdn.domain.com/`，那么除了排除的外部链接，所有打包出来的资源都将从`https://cdn.domain.com/`获取，当然前提你的将打包出来的资源文件部署到资源`CDN`上。那么在主服务器上只需要部署index.html就行了，其他的资源文件全部丢给`CDN`。
 ## 去除element-ui
 注释掉或者删除`index.html`的 
 `<link rel="stylesheet" href="https://unpkg.com/element-ui@2.4.11/lib/theme-chalk/index.css">` 和 
