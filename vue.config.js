@@ -8,7 +8,7 @@ module.exports = {
   // 也可以设置成cdn/oss的URI链接，但是必须以协议开头即http://或者https://
   // baseUrl:
   //   process.env.NODE_ENV === 'production' ? 'https://cdn.domain.com/' : '/',
-  outputDir: process.env.OUTPUT_DIR,
+  outputDir: `dist/${process.env.OUTPUT_DIR}`,
   // 取消生产环境的sourceMap
   productionSourceMap: false,
   devServer: {
