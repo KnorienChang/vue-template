@@ -20,7 +20,7 @@ module.exports = {
     config.performance = {
       hints: false
     };
-    // 添加外部引用
+    // 添加外部引用，如去掉当前外部引用配置，需手动删除`public/index.html`的脚本引入，同时需要手动安装依赖
     config.externals = {
       vue: 'Vue',
       'vue-router': 'VueRouter',
