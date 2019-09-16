@@ -1,5 +1,5 @@
 # vue-template
-
+> 通用示例，具体根据自己的需求调整
 ## Project setup
 ```
 yarn install          # 安装依赖
@@ -9,6 +9,7 @@ yarn run lint         # 检查和修复错误的格式
 yarn run preview:prod # 预览生产环境的应用
 yarn run preview:pre  # 预览其他打包环境的应用
 ```
+> 查看完整的webpack配置可以执行命令`yarn inspect --mode production > xx.js`导出为js(或其他文件格式)查看，默认eslint会进行语法检测。
 ## 打包资源完整使用CDN
 `vue.config.js`配置项`baseUrl`配置开启，判断了本地开发环境和打包环境的配置，**`默认不开启`**。在生产环境设置`CDN`配置，即所有的打包资源都可以放到`CDN`服务器上，减少主服务器压力。例如`baseUrl`设置为`https://cdn.domain.com/`，那么除了排除的外部链接，所有打包出来的资源都将从`https://cdn.domain.com/`获取，当然前提你的将打包出来的资源文件部署到资源`CDN`上。那么在主服务器上只需要部署index.html就行了，其他的资源文件全部丢给`CDN`。
 ## 去除element-ui
@@ -55,4 +56,4 @@ router几乎没有做处理，这块的操作因项目而异。
 
 store进行了文件读取操作，按照模块功能划分的处理进行改造。
 当新增加module的时候，可以直接在`modules`文件夹下创建`xxx.js`，所有的状态都被vuex读取并管理。
->注：因为读取文件的数据，state会多一层对象，所以直接通过读取state会读取不到。假如我要读取`xxx.js`文件下的状态`count`，我们可以通过读取`$store.getters.count`或者`$store.state.xxx.count`，否则就不能够正确的读取到state，具体的可以查阅[vuex官方文档](https://vuex.vuejs.org/zh/installation.html)。
+>注：因为读取文件的数据，state会多一层对象，所以直接通过读取state会读取不到，[详情请查看vuex的modules](https://vuex.vuejs.org/zh/guide/modules.html)。假如我要读取`xxx.js`文件下的状态`count`，我们可以通过读取`$store.getters.count`或者`$store.state.xxx.count`，否则就不能够正确的读取到state，具体的可以查阅[vuex官方文档](https://vuex.vuejs.org/zh/installation.html)。
