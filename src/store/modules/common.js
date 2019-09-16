@@ -12,6 +12,7 @@ const getters = {
 
 const mutations = {
   ADD(state, payload) {
+    // eslint-disable-next-line no-console
     console.log(payload, state.count);
     state.count++;
   }
