@@ -15,35 +15,49 @@ module.exports = {
     open: true,
     proxy: process.env.VUE_APP_HTTP
   },
-  configureWebpack: {
+  configureWebpack: config => {
+    // 去除打包单包过大的提示
+    config.performance = {
+      hints: false
+    };
     // 添加外部引用
-    externals: {
+    config.externals = {
       vue: 'Vue',
       'vue-router': 'VueRouter',
       axios: 'axios',
       vuex: 'Vuex',
       'element-ui': 'Element'
-    },
-    plugins: [
-      new HappyPack({
-        id: 'happy-babel-js',
-        // 3) re-add the loaders you replaced above in #1:
-        loaders: ['babel-loader?presets[]=preset-env'],
-        // loaders: [ 'babel-loader?cacheDirectory=true' ],
-        threadPool: HappyPack.ThreadPool({ size: os.cpus().length })
-      }),
-      new CompressionPlugin({
-        test: /\.(js|css|html)$/,
-        threshold: 10240,
-        deleteOriginalAssets: false,
-        minRatio: 0.6
-      }),
-      new BrotliPlugin({
-        test: /\.(js|css|html)$/,
-        threshold: 10240,
-        deleteOriginalAssets: false,
-        minRatio: 0.6
-      })
-    ]
+    };
+    // 当CPU核心（逻辑）大于2的时候启用happypack打包插件
+    if (os.cpus().length > 2) {
+      config.plugins.push(
+        ...[
+          new HappyPack({
+            id: 'happy-babel-js',
+            loaders: ['babel-loader?presets[]=preset-env'],
+            threadPool: HappyPack.ThreadPool({ size: os.cpus().length })
+          })
+        ]
+      );
+    }
+    // 只在打包的时候启用gz和br插件
+    if (process.env.NODE_ENV === 'production') {
+      config.plugins.push(
+        ...[
+          new CompressionPlugin({
+            test: /\.(js|css|html)$/,
+            threshold: 10240,
+            deleteOriginalAssets: false,
+            minRatio: 0.6
+          }),
+          new BrotliPlugin({
+            test: /\.(js|css|html)$/,
+            threshold: 10240,
+            deleteOriginalAssets: false,
+            minRatio: 0.6
+          })
+        ]
+      );
+    }
   }
 };
