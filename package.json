@@ -8,8 +8,9 @@
     "build:prod": "vue-cli-service build",
     "build:pre": "vue-cli-service build --mode prerelease",
     "lint": "vue-cli-service lint",
-    "preview:prod": "serve -s dist-production",
-    "preview:pre": "serve -s dist-prerelease"
+    "preview:prod": "serve -s dist/dist-production",
+    "preview:pre": "serve -s dist/dist-prerelease",
+    "inspect": "vue-cli-service inspect"
   },
   "dependencies": {
     "axios": "^0.19.0",
