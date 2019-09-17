@@ -1,7 +1,5 @@
 const CompressionPlugin = require('compression-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
-const HappyPack = require('happypack');
-const os = require('os');
 module.exports = {
   // 在vue配置中，去除并限制改写publicPath，而改用baseUrl
   // baseUrl可以设置成相对路径，默认为/
@@ -14,6 +12,9 @@ module.exports = {
   devServer: {
     open: true,
     proxy: process.env.VUE_APP_HTTP
+  },
+  chainWebpack: config => {
+    config.plugins.delete('prefetch');
   },
   configureWebpack: config => {
     // 去除打包单包过大的提示
@@ -28,18 +29,6 @@ module.exports = {
       vuex: 'Vuex',
       'element-ui': 'Element'
     };
-    // 当CPU核心（逻辑）大于2的时候启用happypack打包插件
-    if (os.cpus().length > 2) {
-      config.plugins.push(
-        ...[
-          new HappyPack({
-            id: 'happy-babel-js',
-            loaders: ['babel-loader?presets[]=preset-env'],
-            threadPool: HappyPack.ThreadPool({ size: os.cpus().length })
-          })
-        ]
-      );
-    }
     // 只在打包的时候启用gz和br插件
     if (process.env.NODE_ENV === 'production') {
       config.plugins.push(
